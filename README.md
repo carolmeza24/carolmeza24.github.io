@@ -9,4 +9,4 @@ GitHub Username: carolmeza24
 
 Repo: https://github.com/carolmeza24/carolmeza24.github.io.git
 
-# for our VSCode commits 
+# for our bash commits
