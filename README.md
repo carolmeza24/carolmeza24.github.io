@@ -1,9 +1,12 @@
 # carolmeza24.github.io
 
-# Name 
+## GitHub User Name 
 
-Carolina Meza (user.name carolmeza24)
+Student Name: Carolina Meza 
+GitHub Username: carolmeza24
 
-# URL for GitHub Page  
+## URL for GitHub Page  
 
-carolmeza24.github.io 
+Repo: https://github.com/carolmeza24/carolmeza24.github.io.git
+
+# for our VSCode commits 
