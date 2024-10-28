@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Carol Meza Portfolio</title>
+    </head>
+    <style>
+ body {
+            font-family: 'Times New Roman', Times, serif;
+            margin: 20px;
+            padding: 0;
+            background-color: #fff;
+        }
+        h {
+            font-size: 3.0em;
+            color: #00023c;
+            text-align: center;
+        h2 {
+            font-size: 2.5em;
+            color: #0c0ce7;
+            text-align: center;
+            }
+        a {
+            color: rgb(1, 159, 122);
+            font-size: 2.5em;
+            text-align: center;
+        }
+        b {
+            color: red;
+            text-decoration: underline;
+            font-size: 1.0em;
+        }
+        .navigation {
+            background-color: #333;
+            padding: 10px;
+            text-align: center;
+        }
+        .navigation a {
+            color: white;
+            padding: 14px;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        .navigation a:hover {
+            background-color: #575757;
+        }
+        .contact-form {
+            background: white;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 5px;
+        }
+        img {
+            width: 200px; /* Adjust size as needed */
+            display: block;
+            margin: 20px auto;
+        }
+    </style>
+    <body>
+        <header class="navigation">
+            <h>Welcome to My Portfolio</h>
+            <nav>
+                <a href="#About-Me">About Me</a>
+                <a href="#goals">Goals</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </header>
+
+       <section class="About-Me" id="About-Me">
+        <h2>ABOUT ME</h2>
+        <p> My name is Carol and I like going to the gym, playing with my dog, and watching the sunset. </p>
+       </section> 
+
+       <section class="goals" id="goals">
+        <h2>GOALS</h2>
+        <p> I plan to join the Air Force and hope to become an officer with a vision for working for a private aerospace company.. </p>
+       </section> 
+
+       <section class="Website-link" id="Website-link">
+        <h2>MY LINK</h2>
+        <p> I regularly like to watch Netflix, here is the link if you want to sign up to watch: <a href="https://www.netflix.com/login?nextpage=https%3A%2F%2Fwww.netflix.com%2Fbrowse"> <b> Netflix Sign Up.</b></p>
+       </section> 
+       
+       <section class = "picture">
+        <h2>PICTURE</h2>
+        <p>Here is a picture of my dog Blue!</p>
+        <img src="bluebean.png"></img>
+       </section>
+
+       <section class="contact-form" id="contact">
+        <h2>Contact Me</h2>
+        <form>
+            <label for="name">Name:</label><br>
+            <input type="text" id="name" name="name" required><br><br>
+            <label for="email">Email:</label><br>
+            <input type="email" id="email" name="email" required><br><br>
+            <label for="message">Message:</label><br>
+            <textarea id="message" name="message" rows="4" required></textarea><br><br>
+            <input type="submit" value="Submit">
+        </form>
+    </section>
+    </body>
+</html>
