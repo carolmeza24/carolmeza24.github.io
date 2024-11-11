@@ -1,191 +1,125 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8" />
-    <title>Blue's World</title>
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Playwrite+CZ:wght@100..400&display=swap');
-
-        *{
-            font-size: 14px; 
-        }
-        body{
-            background-color: #A0DDE6;
-            background-image: radial-gradient(#5f5f5f 0.5px, #545353 0.5px);
-            background-size: 10px 10px;
-            background-repeat: repeat;
-
-        }
-
-        header {
-
-            margin: 0px;
-
-        }
-        header > img{
-            
-            width: 100vw; 
-            height: 600px; 
-            object-fit: cover;
-  
-        }
-
-        section{
-            margin-right: auto;
-            margin-left: auto; 
-            margin-top: 100px; 
-            margin-bottom: 100px;
-        }
-
-
-        section > div {
-            border-radius: 25px; 
-            background-color: #E7E6F7; 
-            width: 75vw; 
-            font-family: Georgia, 'Times New Roman', Times, serif, Helvetica, sans-serif;
-            font-size: 1rem;
-            padding: 25px; 
-            margin-right: auto;
-            margin-left: auto; 
-            margin-top: 50px; 
-            margin-bottom: 50px;
-            
-        }
-
-        h1{
-            font-family: Georgia;
-            color: #2A2D34; 
-            font-size: 3.0rem; 
-            font-weight: 500; 
-            border-style: double;
-            border-bottom-color: #000000;
-            border-bottom-width: 5px;
-            border-top-style: none;
-            border-right-style: none;
-            border-left-style: none;
-
-        }
-
-        h2{
-            font-family: Helvetica, cursive;
-            color: #2A2D34; 
-            font-size: 1.75rem; 
-            font-weight: 500; 
-        }
-
-        figure{ 
-            background-color: rgb(212, 212, 212);
-            max-width: 400px; 
-            background-color: #c6c6ee;
-        }
-
-        figure > img
-
-        {
-            max-width: 300px; 
-            object-fit: cover;
-
-        }
-
-        figure > figcaption {
-            font-size: .75rem;
-            font-weight: bolder;
-            font-style: italic;
-            font-family: 'Courier New', Courier, monospace;
-            max-width: 400px;
-        }
-
-        #mobile{
-            display: none;
-        }
-
-       
-
-        quote {
-
-            font-family: Georgia, 'Times New Roman', Times, serif;
-            font-size: 1.5rem; 
-            color: #5C946E;
-            padding: 50px;
-
-
-        }
-
-        quote::before{
-            content: " '' "; 
-        }
-
-        quote::after{
-            content: " '' "; 
-        }
-
-        a {
-         
-            color: black; 
-            font-style: italic;
-            letter-spacing: 2px;
-            text-decoration: underline;
-            
-        }
-
-        a:hover{
-            text-decoration: none;
-            
-        }
-
-        a:visted {
-            color: red; 
-            font-weight: bolder;
-        }
-
-       
-    
-
-
-     </style>
+<title>Midterm</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
 <body>
 
-    <header>
-        <img src="bluebean.png"/>
-    </header>
-
-    <div id="mobile">
-        <img src="bluebean.png"/ id="mobile">
+<div class="w3-top">
+  <div class="w3-bar w3-white w3-wide w3-padding w3-card">
+    <a href="#home" class="w3-bar-item w3-button"><b>BLUE'S</b> World</a>
+    <div class="w3-right w3-hide-small">
+      <a href="#relation" class="w3-bar-item w3-button">Relation</a>
+      <a href="#about" class="w3-bar-item w3-button">About</a>
+      <a href="#contact" class="w3-bar-item w3-button">Contact</a>
     </div>
-    <section id="about">
-        <div>
-            <h1>just a sample midterm project</h1>
-            <p>I just want to say how proud of my students I am! This is the midterm and it can get really scary! This is just a one page example of how simple a midterm can look</p>
-            <p>Photo by <a href="https://unsplash.com/@florianklauer?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Florian Klauer</a> on <a href="https://unsplash.com/photos/black-fayorit-typewriter-with-printer-paper-mk7D-4UCfmg?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
-            </p>
+  </div>
+</div>
 
-            <p>this page is scrollable, and if you view it in mobile - it's actually mobile responsive! We are using vw/vh <strong>and</strong> relative sizes. If you notice the <code>@media</code>, you see the only thing that changes is the <code>rem</code>, which is the relative sizing for the document!</b></p>
-        </div>
-    </section>
+<header class="w3-display-container w3-content w3-wide" style="max-width:1500px;" id="home">
+  <img class="w3-image" src="bluebean.png" alt="Blue" width="1500" height="400">
+  <div class="w3-display-middle w3-margin-top w3-center">
+    <h1 class="w3-xxlarge w3-text-white"><span class="w3-padding w3-blue w3-opacity-min"><b>BLUE'S</b></span> <span class="w3-hide-small w3-text-light-grey">World</span></h1>
+  </div>
+</header>
 
 
-    <section id="section2">
-        <div>
-            <h2>just another section</h1>
-                <article>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                </article>
+<div class="w3-content w3-padding" style="max-width:1564px">
 
-                <figure>
-                    <img src="bluebean.png"/>
-                <figcaption>a caption for the picture <br/>
-                    Photo by <a href="https://unsplash.com/@anniespratt?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Annie Spratt</a> on <a href="https://unsplash.com/photos/white-oriental-lily-flower-38yKQLL11d8?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
-                </figcaption>
-                
-        </div>
 
-        <div>
-            <quote>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </quote>
-        </div>
-    </section>
-    
+  <div class="w3-container w3-padding-32" id="relation">
+    <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16"><a href ="https://open.spotify.com/playlist/2bViJ6t6n4nafGxgJktwvp?si=NMvfhTJ3Re-cXlrhdD7O_g">Relation</a></h3>
+  </div>
+
+  <div class="w3-row-padding">
+    <div class="w3-col l3 m6 w3-margin-bottom">
+      <div class="w3-display-container">
+        <div class="w3-display-topleft w3-black w3-padding">Blue World - Mac Miller</div>
+        <img src="blueworld.jpg" alt="Blue's world" style="width:100%">
+      </div>
+    </div>
+    <div class="w3-col l3 m6 w3-margin-bottom">
+      <div class="w3-display-container">
+        <div class="w3-display-topleft w3-black w3-padding">BLUE - Billie Eilish</div>
+        <img src="bluebillie.jpg" alt="BLUE" style="width:100%">
+      </div>
+    </div>
+    <div class="w3-col l3 m6 w3-margin-bottom">
+      <div class="w3-display-container">
+        <div class="w3-display-topleft w3-black w3-padding">Blue Notes - Meek Mill</div>
+        <img src="bluenotes.jpg" alt="BlueNotes" style="width:100%">
+      </div>
+    </div>
+    <div class="w3-col l3 m6 w3-margin-bottom">
+      <div class="w3-display-container">
+        <div class="w3-display-topleft w3-black w3-padding">Big City Blues - Lil Peep</div>
+        <img src="bigcityblues.jpg" alt="bigcityblues" style="width:100%">
+      </div>
+    </div>
+  </div>
+
+  <div class="w3-container w3-padding">
+    <div class="w3-center w3-text-light-blue">
+        <p>Some inspirational songs that Blue ponders life on which all include to word Blue.</p>
+  </div>
+  
+
+  <div class="w3-container w3-padding-32" id="about">
+    <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">About</h3>
+    <p>This is all about Blue, my Australian Shepherd who is my best friend and the world's best dog. Blue was named after my favorite color because I believe it is the most unnatural, natural color that exists. From the sky to the seas to the depths of the rainforest and out into the Universe, just like the color blue, Blue also shines so bright. 
+
+    </p>
+  </div>
+
+  <div class="w3-row-padding">
+    <div class="w3-col l3 m6 w3-margin-bottom">
+      <img src="sleep.png" alt="sleeping" style="width:100%">
+      <h3>Sleeping</h3>
+      <p>Blue spends a good amount of his time sleeping. He loves my bed the most.</p>
+    </div>
+    <div class="w3-col l3 m6 w3-margin-bottom">
+      <img src="eating.png" alt="Eating" style="width:100%" style="border-radius: 50%">
+      <h3>Eating/Begging</h3>
+      <p>Blue LOVES food especially other people's food.</p>
+    </div>
+    <div class="w3-col l3 m6 w3-margin-bottom">
+      <img src="stretch.png" alt="Stretching" style="width:100%" style="border-radius: 50%">
+      <h3>Big Stretch</h3>
+      <p>After sleeping for so many hours, Blue has to get a bigggg stretch in to start his day.</p>
+    </div>
+    <div class="w3-col l3 m6 w3-margin-bottom">
+      <img src="carride.png" alt="car" style="width:100%" style="border-radius: 50%">
+      <h3>Car Rides</h3>
+      <p>Blue loves to go for car rides any time of the day (if it doesn't cut into his nap time).</p>
+    </div>
+  </div>
+
+  <div class="w3-container w3-padding-32" id="contact">
+    <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">Contact Blue!</h3>
+    <p>Wanna pet the good boy and give him some loves?</p>
+    <form action="/action_page.php" target="_blank">
+      <input class="w3-input w3-border" type="text" placeholder="Name" required name="Name">
+      <input class="w3-input w3-section w3-border" type="text" placeholder="Email" required name="Email">
+      <input class="w3-input w3-section w3-border" type="text" placeholder="Pets?" required name="Pets?">
+      <input class="w3-input w3-section w3-border" type="text" placeholder="Loves?" required name="Loves?">
+      <button class="w3-button w3-black w3-section" type="submit">
+        <i class="fa fa-paper-plane"></i> SEND MESSAGE
+      </button>
+    </form>
+  </div>
+  
+
+<div class="w3-container">
+    <div class="w3-display-container">
+        <div class="w3-display-topleft w3-black w3-padding">Blue Sunset</div>
+ <img src="bluesunset.jpg" class="w3-image" width="1500" height="400">
+</div>
+
+</div>
+
+
 </body>
 </html>
