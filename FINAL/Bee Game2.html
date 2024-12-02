@@ -35,6 +35,12 @@
             font-weight: bold;
             color: white;
         }
+        #gameStartMessage {
+            font-size: 24px;
+            font-weight: bold;
+            color: rgb(242, 0, 255);
+            margin-top: 20px;
+        }
     </style>
     </head>
     <body>
@@ -43,7 +49,7 @@
             <div class="path" id="hexagonPath">
                 <!-- Hexagons in the specified path -->
                 <div class="hexagon" id="hexagon0">
-                    <span id="selectedBee">🐝</span>
+                    <span id="playerBee">🐝</span>
                 </div>
                 <div class="hexagon" id="hexagon1"></div>
                 <div class="hexagon" id="hexagon2"></div>
@@ -58,6 +64,8 @@
                 <div class="hexagon"></div>
                 <div class="hexagon"></div> <!-- 3 Hexagons Up -->
             </div>
+            
+            <div id="gameStartMessage">The game will begin shortly...</div>
             <div id="winningMessage">Congratulations! You reached the last hexagon!</div>
         </div>
     
@@ -72,13 +80,21 @@
     
             if (!playerName || !beeCharacter) {
                 alert('You must select a bee and enter your name on the first page.');
-                window.location.href = 'Bee Game.html'; // Redirect back to the main menu if nothing is set
+                window.location.href = 'index.html'; // Redirect back to the main menu if nothing is set
             }
     
             document.getElementById('chosenBee').innerText = beeCharacter;
     
-            // Start the math game
-            askQuestion();
+            // Show the game start message and begin the countdown to start the game
+            document.getElementById('gameStartMessage').style.display = 'block';
+            
+            setTimeout(() => {
+                // Hide the game start message after a short delay
+                document.getElementById('gameStartMessage').style.display = 'none';
+    
+                // Start the math game
+                askQuestion();
+            }, 3000); // 3000 milliseconds = 3 seconds
     
             function askQuestion() {
                 if (currentHexagon >= totalHexagons) return; // Stop if we reached the end
