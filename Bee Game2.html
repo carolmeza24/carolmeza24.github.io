@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, content=device-width, initial-scale=1.0">
+    <title>Bee Game - Math Challenge</title>
+    <style>
+        body {
+            background-color: yellow;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+        .hexagon {
+            width: 100px;
+            height: 55px;
+            background-color: lightblue;
+            display: inline-block;
+            margin: 15px 0;
+            position: relative;
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+        }
+        #playerBee {
+            position: absolute;
+            bottom: 16px; /* Adjust to position the bee inside the hexagon */
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 40px; /* Adjust size as needed */
+            transition: transform 0.5s; /* Smooth transition for movement */
+        }
+        .path {
+            display: flex;
+            justify-content: center; /* Center align hexagons */
+            flex-wrap: wrap; /* Allow wrapping for up/down movement */
+            position: relative;
+        }
+        #winningMessage {
+            display: none;
+            margin-top: 20px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+    </style>
+    </head>
+    <body>
+        <div id="gameScreen">
+            <h2>Game Loading...</h2>
+            <p>Your adventure with <span id="chosenBee"></span> is about to begin!</p>
+            <div class="path" id="hexagonPath">
+                <!-- Hexagons in the specific path -->
+                <div class="hexagon" id="hexagon0">
+                    <span id="playerBee">🐝</span>
+                </div>
+                <div class="hexagon"></div>
+                <div class="hexagon"></div>
+                <div class="hexagon"></div>
+                <div class="hexagon"></div>
+                <div class="hexagon"></div>
+                <div class="hexagon" id="hexagon1"></div>
+                <div class="hexagon" id="hexagon2"></div>
+                <div class="hexagon" id="hexagon3"></div>
+                <div class="hexagon" id="hexagon4"></div>
+                <div class="hexagon" id="hexagon5"></div>
+                <div class="hexagon" id="hexagon6"></div>
+            </div>
+            <div id="winningMessage">Congratulations! You reached the last hexagon!</div>
+        </div>
+    
+        <script>
+            let selectedBee;
+            let currentHexagon = 0; // Track the current position of the bee
+            const totalHexagons = 12; // Total hexagons in the path
+    
+            // Retrieve player name and bee character from localStorage
+            const playerName = localStorage.getItem('playerName');
+            const beeCharacter = localStorage.getItem('selectedBee');
+    
+            if (!playerName || !beeCharacter) {
+                alert('You must select a bee and enter your name on the first page.');
+                window.location.href = 'index.html'; // Redirect back to the main menu if nothing is set
+            }
+    
+            document.getElementById('chosenBee').innerText = beeCharacter;
+    
+            // Start the math game
+            askQuestion();
+    
+            function askQuestion() {
+                if (currentHexagon >= totalHexagons) return; // Stop if we reached the end
+    
+                // Generate a simple math question
+                const number1 = Math.floor(Math.random() * 10) + 1; // Random number between 1 and 10
+                const number2 = Math.floor(Math.random() * 10) + 1;
+                const answer = number1 + number2;
+    
+                const userAnswer = prompt(`What is ${number1} + ${number2}?`);
+    
+                // Check if the answer is correct
+                if (parseInt(userAnswer) === answer) {
+                    moveBee();
+                } else {
+                    alert('Incorrect! Moving back two hexagons.');
+                    moveBeeBack();
+                }
+            }
+    
+            function moveBee() {
+                currentHexagon++;
+                if (currentHexagon < totalHexagons) {
+                    positionBee();
+                    askQuestion(); // Ask the next question
+                } else {
+                    document.getElementById('winningMessage').style.display = 'block'; // Display winning message
+                }
+            }
+    
+            function moveBeeBack() {
+                currentHexagon -= 2; // Move back two hexagons
+                if (currentHexagon < 0) currentHexagon = 0; // Ensure it does not go below start
+                positionBee();
+                askQuestion(); // Ask question again
+            }
+    
+            function positionBee() {
+                const hexagons = document.getElementsByClassName('hexagon');
+                // Reset color of all hexagons
+                for (let i = 0; i < hexagons.length; i++) {
+                    hexagons[i].style.backgroundColor = 'lightblue'; 
+                }
+                hexagons[currentHexagon].style.backgroundColor = 'lightgreen'; // Highlight current hexagon
+    
+                // Move the bee visually to the current hexagon
+                const bee = document.getElementById('playerBee');
+                const hexagonWidth = hexagons[currentHexagon].offsetLeft;
+                bee.style.transform = `translate(${hexagonWidth}px, 16px)`; // Adjust the position of the bee
+            }
+        </script>
+    </body>
+    </html>
