@@ -39,6 +39,7 @@
             margin-top: 20px;
             font-size: 24px;
             font-weight: bold;
+            color: white;
         }
     </style>
     </head>
@@ -47,21 +48,22 @@
             <h2>Game Loading...</h2>
             <p>Your adventure with <span id="chosenBee"></span> is about to begin!</p>
             <div class="path" id="hexagonPath">
-                <!-- Hexagons in the specific path -->
+                <!-- Hexagons in the specified path -->
                 <div class="hexagon" id="hexagon0">
                     <span id="playerBee">🐝</span>
                 </div>
-                <div class="hexagon"></div>
-                <div class="hexagon"></div>
-                <div class="hexagon"></div>
-                <div class="hexagon"></div>
-                <div class="hexagon"></div>
                 <div class="hexagon" id="hexagon1"></div>
                 <div class="hexagon" id="hexagon2"></div>
                 <div class="hexagon" id="hexagon3"></div>
+                <div class="hexagon"></div>
+                <div class="hexagon"></div> <!-- 2 Hexagons Up -->
                 <div class="hexagon" id="hexagon4"></div>
                 <div class="hexagon" id="hexagon5"></div>
                 <div class="hexagon" id="hexagon6"></div>
+                <div class="hexagon" id="hexagon7"></div>
+                <div class="hexagon" id="hexagon8"></div>
+                <div class="hexagon"></div>
+                <div class="hexagon"></div> <!-- 3 Hexagons Up -->
             </div>
             <div id="winningMessage">Congratulations! You reached the last hexagon!</div>
         </div>
