@@ -101,10 +101,9 @@
             }
 
             // Clear the initial screen
-            document.getElementById('homeScreen').style.display = 'none';
-            document.getElementById('gameScreen').style.display = 'block';
-            document.getElementById('chosenBee').innerText = selectedBee;
-            window.location.href = 'Bee Game2.html';
+            localStorage.setItem('playerName', name);
+            localStorage.setItem('selectedBee', selectedBee);
+            window.location.href = 'Bee Game2.html'; // Redirect to the game page
         }
 
     </script>
