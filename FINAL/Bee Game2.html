@@ -8,6 +8,7 @@
         body {
             background: url('Images/honeycomb.jpg');
             background-position: center;
+            background-size: cover;
             background-color: yellow;
             font-family: Arial, sans-serif;
             color: pink;
@@ -40,8 +41,8 @@
         }
         #winningMessage {
             display: none;
-            margin-top: 30%;
-            font-size: 24px;
+            margin-top: 15%;
+            font-size: 30px;
             font-weight: bold;
             color: white;
         }
@@ -49,7 +50,7 @@
             display: none; /* Initially hide the start message */
             font-size: 24px;
             font-weight: bold;
-            color: rgb(242, 0, 255);
+            color: rgb(255, 0, 0);
             margin-top: 20px;
         }
     </style>
@@ -76,14 +77,13 @@
         </div>
 
         <div id="gameStartMessage">The game will begin shortly with <span id="selectBee"></span> </div>
-        <div id="winningMessage">Congratulations! You reached the last hexagon!</div>
+        <div id="winningMessage">CONGRATULATIONS! You reached the last hexagon!</div>
     </div>
 
     <script>
         let currentHexagon = 0; // Track the current position of the bee
-        const totalHexagons = 8; // Total hexagons in the path
+        const totalHexagons = 13; // Total hexagons in the path
 
-        // Retrieve player name and bee character from localStorage
         const playerName = localStorage.getItem('playerName');
         const beeCharacter = localStorage.getItem('selectedBee');
 
@@ -125,6 +125,22 @@
                 moveBeeBack(); // Move the bee back on incorrect answer
             }
         }
+            function blinkWinningMessage() {
+                const winningMessage = document.getElementById('winningMessage');
+                winningMessage.style.display = 'block'; // Ensure message is visible
+
+                let isVisible = true; // Track visibility
+                const blinkInterval = setInterval(() => {
+                    winningMessage.style.visibility = isVisible ? 'hidden' : 'visible'; // Toggle visibility
+                    isVisible = !isVisible; // Flip visibility state
+                    }, 500); // Change visibility every 500 milliseconds
+
+                    // Stop blinking after 5 seconds
+                    setTimeout(() => {
+                    clearInterval(blinkInterval); // Clear the interval
+                    winningMessage.style.visibility = 'visible'; // Ensure the message stays visible
+                    }, 5000); // Blink for 5 seconds
+            }
 
         function moveBee() {
             currentHexagon++;
@@ -132,7 +148,7 @@
                 positionBee(); // Update bee's position
                 setTimeout(askQuestion, 2000); // Ask the next question after 2 seconds
             } else {
-                document.getElementById('winningMessage').style.display = 'block'; // Display winning message
+                blinkWinningMessage();  // Display winning message
             }
         }
 
@@ -151,11 +167,21 @@
             }
             hexagons[currentHexagon].style.backgroundColor = 'lightgreen'; // Highlight current hexagon
 
-            // Move the bee visually to the current hexagon
             const bee = document.getElementById('playerBee');
-            const hexagonWidth = hexagons[currentHexagon].offsetLeft;
-            bee.style.transform = `translate(${hexagonWidth}px, 16px)`; // Adjust the position of the bee
-        }
+            const currentHexagonElement = hexagons[currentHexagon];
+
+            const hexagonWidth = currentHexagonElement.offsetWidth;
+            const hexagonHeight = currentHexagonElement.offsetHeight;
+
+            // Adjust the bee's position to be centered within the hexagon
+            bee.style.transform = `translate(-50%, -50%)`; // Center the bee
+            bee.style.position = 'absolute'; // Ensure the bee is positioned absolutely
+            currentHexagonElement.appendChild(bee); // Append bee to the current hexagon
+
+            // Position bee at the center of the hexagon
+            bee.style.left = `${hexagonWidth / 2}px`;
+            bee.style.top = `${hexagonHeight / 2}px`;
+            }
     </script>
 </body>
 </html>
