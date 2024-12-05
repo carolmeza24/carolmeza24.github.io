@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, content=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bee Game - Math Challenge</title>
     <style>
         body {
@@ -15,8 +15,8 @@
             padding: 50px;
         }
         .hexagon {
-            width: 80px;
-            height: 80px;
+            width: 100px;
+            height: 100px;
             background-color: lightblue;
             display: inline-block;
             margin: 20px;
@@ -40,121 +40,118 @@
         }
         #winningMessage {
             display: none;
-            margin-top: 30%;
+            margin-top: 20%;
             font-size: 24px;
             font-weight: bold;
             color: white;
         }
         #gameStartMessage {
+            display: none; /* Initially hide the start message */
             font-size: 24px;
             font-weight: bold;
             color: rgb(242, 0, 255);
             margin-top: 20px;
         }
     </style>
-    </head>
-    <body>
-        <div id="gameScreen">
-            <div class="path" id="hexagonPath">
-                <!-- Hexagons in the specified path -->
-                <div class="hexagon" id="hexagon0">
-                    <span id="playerBee">🐝</span>
-                </div>
-                <div class="hexagon" id="hexagon1"></div>
-                <div class="hexagon" id="hexagon2"></div>
-                <div class="hexagon" id="hexagon3"></div>
-                <div class="hexagon"></div>
-                <div class="hexagon"></div> <!-- 2 Hexagons Up -->
-                <div class="hexagon" id="hexagon4"></div>
-                <div class="hexagon" id="hexagon5"></div>
-                <div class="hexagon" id="hexagon6"></div>
-                <div class="hexagon" id="hexagon7"></div>
-                <div class="hexagon" id="hexagon8"></div>
-                <div class="hexagon"></div>
-                <div class="hexagon"></div> <!-- 3 Hexagons Up -->
+</head>
+<body>
+    <div id="gameScreen">
+        <div class="path" id="hexagonPath">
+            <!-- Hexagons in the specified path -->
+            <div class="hexagon" id="hexagon0">
+                <span id="playerBee">🐝</span>
             </div>
-            
-            <div id="gameStartMessage">The game will begin shortly with <span id="chosenBee"></span> </div>
-            <div id="winningMessage">Congratulations! You reached the last hexagon!</div>
+            <div class="hexagon" id="hexagon1"></div>
+            <div class="hexagon" id="hexagon2"></div>
+            <div class="hexagon" id="hexagon3"></div>
+            <div class="hexagon" id="hexagon4"></div>
+            <div class="hexagon" id="hexagon5"></div>
+            <div class="hexagon" id="hexagon6"></div>
+            <div class="hexagon" id="hexagon7"></div>
+            <div class="hexagon" id="hexagon8"></div>
         </div>
-    
-        <script>
-            let selectedBee;
-            let currentHexagon = 0; // Track the current position of the bee
-            const totalHexagons = 8; // Total hexagons in the path
-    
-            // Retrieve player name and bee character from localStorage
-            const playerName = localStorage.getItem('playerName');
-            const beeCharacter = localStorage.getItem('selectedBee');
-    
-            if (!playerName || !beeCharacter) {
-                alert('You must select a bee and enter your name on the first page.');
-                window.location.href = 'Bee Game.html'; // Redirect back to the main menu if nothing is set
-            }
-    
-            // document.getElementById('chosenBee').innerText = beeCharacter;
-    
-            // Show the game start message and begin the countdown to start the game
-            document.getElementById('gameStartMessage').style.display = 'block';
-            
-            function showMessage() {
+
+        <div id="gameStartMessage">The game will begin shortly with <span id="selectBee"></span> </div>
+        <div id="winningMessage">Congratulations! You reached the last hexagon!</div>
+    </div>
+
+    <script>
+        let currentHexagon = 0; // Track the current position of the bee
+        const totalHexagons = 8; // Total hexagons in the path
+
+        // Retrieve player name and bee character from localStorage
+        const playerName = localStorage.getItem('playerName');
+        const beeCharacter = localStorage.getItem('selectedBee');
+
+        if (!playerName || !beeCharacter) {
+            alert('You must select a bee and enter your name on the first page.');
+            window.location.href = 'Bee Game.html'; // Redirect back to the main menu if nothing is set
+        }
+
+        const selectBeeElement = document.getElementById('selectedBee');
+        selectBeeElement.innerText = beeCharacter; // Display the selected bee
+
+        // Show the game start message and begin the countdown to start the game
+        document.getElementById('gameStartMessage').style.display = 'block';
+        showMessage(); // Call function to show the message
+
+        function showMessage() {
             const messageDiv = document.getElementById('gameStartMessage');
-            messageDiv.style.display = 'block'; // Show the message
             setTimeout(() => {
-                messageDiv.style.display = 'none'; // Hide the message after 5 seconds
-                askQuestion();
-            }, 3000);
+                messageDiv.style.display = 'none'; // Hide the message after 3 seconds
+                askQuestion(); // Start asking the first question
+            }, 3000); // 3000 milliseconds = 3 seconds
+        }
+
+        function askQuestion() {
+            if (currentHexagon >= totalHexagons + 1) return; // Stop if we reached the end
+
+            // Generate a simple math question
+            const number1 = Math.floor(Math.random() * 10) + 1; // Random number between 1 and 10
+            const number2 = Math.floor(Math.random() * 10) + 1;
+            const answer = number1 + number2;
+
+            const userAnswer = prompt(`What is ${number1} + ${number2}?`);
+
+            // Check if the answer is correct
+            if (parseInt(userAnswer, 10) === answer) {
+                moveBee(); // Move the bee on correct answer
+            } else {
+                alert('Incorrect! Moving back two hexagons.');
+                moveBeeBack(); // Move the bee back on incorrect answer
             }
-    
-            function askQuestion() {
-                if (currentHexagon >= totalHexagons) return; // Stop if we reached the end
-    
-                // Generate a simple math question
-                const number1 = Math.floor(Math.random() * 10) + 1; // Random number between 1 and 10
-                const number2 = Math.floor(Math.random() * 10) + 1;
-                const answer = number1 + number2;
-    
-                const userAnswer = prompt(`What is ${number1} + ${number2}?`);
-    
-                // Check if the answer is correct
-                if (parseInt(userAnswer) === answer) {
-                    moveBee();
-                } else {
-                    alert('Incorrect! Moving back two hexagons.');
-                    moveBeeBack();
-                }
+        }
+
+        function moveBee() {
+            currentHexagon++;
+            if (currentHexagon < totalHexagons) {
+                positionBee(); // Update bee's position
+                setTimeout(askQuestion, 2000);
+            } else {
+                document.getElementById('winningMessage').style.display = 'block'; // Display winning message
             }
-    
-            function moveBee() {
-                currentHexagon++;
-                if (currentHexagon < totalHexagons) {
-                    positionBee();
-                    askQuestion(); // Ask the next question
-                } else {
-                    document.getElementById('winningMessage').style.display = 'block'; // Display winning message
-                }
+        }
+
+        function moveBeeBack() {
+            currentHexagon -= 2; // Move back two hexagons
+            if (currentHexagon < 0) currentHexagon = 0; // Ensure it does not go below start
+            positionBee(); // Update bee's position
+            setTimeout(askQuestion, 1000); // Ask question again
+        }
+
+        function positionBee() {
+            const hexagons = document.getElementsByClassName('hexagon');
+            // Reset color of all hexagons
+            for (let i = 0; i < hexagons.length; i++) {
+                hexagons[i].style.backgroundColor = 'lightblue'; 
             }
-    
-            function moveBeeBack() {
-                currentHexagon -= 2; // Move back two hexagons
-                if (currentHexagon < 0) currentHexagon = 0; // Ensure it does not go below start
-                positionBee();
-                askQuestion(); // Ask question again
-            }
-    
-            function positionBee() {
-                const hexagons = document.getElementsByClassName('hexagon');
-                // Reset color of all hexagons
-                for (let i = 0; i < hexagons.length; i++) {
-                    hexagons[i].style.backgroundColor = 'lightblue'; 
-                }
-                hexagons[currentHexagon].style.backgroundColor = 'lightgreen'; // Highlight current hexagon
-    
-                // Move the bee visually to the current hexagon
-                const bee = document.getElementById('playerBee');
-                const hexagonWidth = hexagons[currentHexagon].offsetLeft;
-                bee.style.transform = `translate(${hexagonWidth}px, 16px)`; // Adjust the position of the bee
-            }
-        </script>
-    </body>
-    </html>
+            hexagons[currentHexagon].style.backgroundColor = 'lightgreen'; // Highlight current hexagon
+
+            // Move the bee visually to the current hexagon
+            const bee = document.getElementById('playerBee');
+            const hexagonWidth = hexagons[currentHexagon].offsetLeft;
+            bee.style.transform = `translate(${hexagonWidth}px, 20px)`; // Adjust the position of the bee
+        }
+    </script>
+</body>
+</html>
