@@ -5,12 +5,22 @@
     <meta name="viewport" content="width=device-width, content=device-width, initial-scale=1.0">
     <title>Bee Game - Math Challenge</title>
     <style>
+        body {
+            background: url('Images/honeycomb.jpg');
+            background-position: center;
+            background-color: yellow;
+            font-family: Arial, sans-serif;
+            color: pink;
+            text-align: center;
+            padding: 50px;
+        }
         .hexagon {
-            width: 100px;
-            height: 55px;
+            width: 80px;
+            height: 80px;
             background-color: lightblue;
             display: inline-block;
-            margin: 15px 0;
+            margin: 20px;
+            border-color: yellow;
             position: relative;
             clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
         }
@@ -30,7 +40,7 @@
         }
         #winningMessage {
             display: none;
-            margin-top: 20px;
+            margin-top: 30%;
             font-size: 24px;
             font-weight: bold;
             color: white;
@@ -45,7 +55,6 @@
     </head>
     <body>
         <div id="gameScreen">
-            <p>Your adventure with <span id="chosenBee"></span> is about to begin!</p>
             <div class="path" id="hexagonPath">
                 <!-- Hexagons in the specified path -->
                 <div class="hexagon" id="hexagon0">
@@ -65,14 +74,14 @@
                 <div class="hexagon"></div> <!-- 3 Hexagons Up -->
             </div>
             
-            <div id="gameStartMessage">The game will begin shortly...</div>
+            <div id="gameStartMessage">The game will begin shortly with <span id="chosenBee"></span> </div>
             <div id="winningMessage">Congratulations! You reached the last hexagon!</div>
         </div>
     
         <script>
             let selectedBee;
             let currentHexagon = 0; // Track the current position of the bee
-            const totalHexagons = 12; // Total hexagons in the path
+            const totalHexagons = 8; // Total hexagons in the path
     
             // Retrieve player name and bee character from localStorage
             const playerName = localStorage.getItem('playerName');
@@ -83,18 +92,19 @@
                 window.location.href = 'Bee Game.html'; // Redirect back to the main menu if nothing is set
             }
     
-            document.getElementById('chosenBee').innerText = beeCharacter;
+            // document.getElementById('chosenBee').innerText = beeCharacter;
     
             // Show the game start message and begin the countdown to start the game
             document.getElementById('gameStartMessage').style.display = 'block';
             
+            function showMessage() {
+            const messageDiv = document.getElementById('gameStartMessage');
+            messageDiv.style.display = 'block'; // Show the message
             setTimeout(() => {
-                // Hide the game start message after a short delay
-                document.getElementById('gameStartMessage').style.display = 'none';
-    
-                // Start the math game
-                askQuestion();
-            }, 3000); // 3000 milliseconds = 3 seconds
+                messageDiv.style.display = 'none'; // Hide the message after 5 seconds
+            }, 5000);
+            askQuestion();
+            }
     
             function askQuestion() {
                 if (currentHexagon >= totalHexagons) return; // Stop if we reached the end
