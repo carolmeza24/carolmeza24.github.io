@@ -39,4 +39,6 @@ body {
 
 #message {
     margin-top: 20px;
+    font-size: large;
+    color: red;
 }
