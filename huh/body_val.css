@@ -2,10 +2,10 @@
 body {
     background-image: url('https://loveandspecs.com/wp-content/uploads/2015/03/valentines-day-desktop-background-hearts.png');
     background-size: cover;
-   
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    display: flex; /* Make body a flex container */
+    justify-content: center; /* Center items horizontally */
+    align-items: center; /* Center items vertically */
+    height: 100vh; /* Full viewport height */
     margin: 0;
     font-family: Arial, sans-serif;
 }
@@ -41,5 +41,6 @@ body {
 #message {
     margin-top: 20px;
     font-size: 20px;
-    color: red;
+    color: #d25d82;
+    background-color: pink;
 }
