@@ -1,6 +1,6 @@
 
 body {
-    background: url('Images/hearts.png');
+    background-image: url('Images/hearts.png');
     display: flex;
     justify-content: center;
     align-items: center;
