@@ -44,3 +44,8 @@ body {
     color: #ffffff;
     background-color: pink;
 }
+
+.responsive-gif {
+    max-width: 100%;
+    height: auto;
+}
